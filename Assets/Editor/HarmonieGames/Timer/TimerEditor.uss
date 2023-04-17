@@ -1,0 +1,50 @@
+.surtitle {
+    font-size: 18px;
+    color: rgb(148, 148, 148);
+    width: auto;
+    display: flex;
+    align-items: center;
+    -unity-text-align: lower-center;
+    height: auto;
+    justify-content: center;
+    -unity-font-style: normal;
+    -unity-font: url('/Assets/Editor/HarmonieGames/Timer/Assets/TypeMates  CeraRoundProRegular.otf');
+}
+
+.timer-label {
+    font-size: 48px;
+    color: rgb(229, 229, 229);
+    width: auto;
+    -unity-text-align: middle-center;
+    -unity-font-style: normal;
+    -unity-font: url('/Assets/Editor/HarmonieGames/Timer/Assets/TypeMates  Cera Round Pro Bold.otf');
+}
+
+.button-timer {
+    background-color: rgba(0, 184, 163, 0);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 100px;
+    height: 100px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    background-image: url('/Assets/Editor/HarmonieGames/Timer/Assets/Ellipse 1.png');
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-text-align: middle-center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.button-icon {
+    background-image: url('/Assets/Editor/HarmonieGames/Timer/Assets/play-icon.png');
+    -unity-background-image-tint-color: rgb(56, 56, 56);
+    background-color: rgba(255, 255, 255, 0);
+    top: -15px;
+    width: 22px;
+    height: 25px;
+}
