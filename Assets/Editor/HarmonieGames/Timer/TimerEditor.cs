@@ -23,10 +23,10 @@ namespace Editor.HarmonieGames.Timer
         private CancellationTokenSource _cancellationToken;
         
         [MenuItem("Tools/Harmonie Games/Timer test")]
-        public static void ShowExample()
+        public static void ShowWindow()
         {
-            var wnd = GetWindow<TimerEditor>();
-            wnd.titleContent = new GUIContent("TimerEditor");
+            var window = GetWindow<TimerEditor>();
+            window.titleContent = new GUIContent("TimerEditor");
         }
 
         public void CreateGUI()
