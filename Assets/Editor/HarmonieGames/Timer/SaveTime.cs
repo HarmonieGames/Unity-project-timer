@@ -32,7 +32,7 @@ namespace Editor.HarmonieGames.Timer
             //Remove brackets
             json = json.Replace("[", "").Replace("]", "");
             
-            var timeSpanData = json.Split(',');
+            var timeSpanData = json.Split('}');
            
             _sessions.AddRange(FromStringToSession(timeSpanData));
 
@@ -43,10 +43,27 @@ namespace Editor.HarmonieGames.Timer
         {
             return _sessions.Select(session => JsonUtility.ToJson(session)).ToList();
         }
-        
-        private static List<Session> FromStringToSession(IEnumerable<string> strings)
+
+        private static IEnumerable<Session> FromStringToSession(IEnumerable<string> strings)
         {
-            return (from s in strings where !string.IsNullOrWhiteSpace(s) select JsonUtility.FromJson<Session>(s)).ToList();
+            var sessions = new List<Session>();
+            
+            foreach (var s in strings)
+            {
+                var cleanString = s + "}";
+                
+                //If first charactere is comma, remove it
+                if (cleanString[0] == ',')
+                {
+                    cleanString = cleanString.Substring(1);
+                }
+                
+                //if not empty
+                if (s != "")
+                    sessions.Add(JsonUtility.FromJson<Session>(cleanString));
+            }
+
+            return sessions;
         }
 
         //Save timeSpan to json file
@@ -54,8 +71,7 @@ namespace Editor.HarmonieGames.Timer
         {
             //Last Session in List
             var lastSession = _sessions[_sessions.Count - 1];
-
-            Debug.Log(_sessions.Count);
+            
             Debug.Log(lastSession.ToDateTime() + " vs " + DateTime.Now.Date);
             
             if (lastSession.ToDateTime() == DateTime.Now.Date)
@@ -75,7 +91,6 @@ namespace Editor.HarmonieGames.Timer
             foreach (var s in FromSessionToString())
             {
                 json += s;
-                Debug.Log(json);
                 
                 //if not last element, add comma
                 if (s != FromSessionToString()[FromSessionToString().Count - 1])
