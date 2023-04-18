@@ -38,22 +38,31 @@ namespace Editor.HarmonieGames.Timer
         private void OnGUI()
         {
             GUILayout.FlexibleSpace();
-        
-            GUILayout.Label("Total project time", _skin.GetStyle("TimerSurtitle"));
-            GUILayout.Label(_timer.GetTotalTime(), _skin.GetStyle("TimerLabel"));
+            
+            //Current session time
+            GUILayout.Label("Current session time", _skin.GetStyle("CurrentTimerSurtitle"));
+            GUILayout.Label(_timer.GetLastSessionTime(), _skin.GetStyle("CurrentTimerLabel"));
 
+            //Button
             Texture2D icon = null;
 
             icon = AssetDatabase.LoadAssetAtPath<Texture2D>(_timer.GetTimerStatus() ? $"{_folderPath}/Assets/pause-icon.png" : $"{_folderPath}/Assets/play-icon.png");
 
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
+            
             if (GUILayout.Button(icon,_skin.GetStyle("PlayButton")))
             {
                 _timer.ToggleTimer();
             }
+            
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
+            
+            //Total time
+        
+            GUILayout.Label("Total project time", _skin.GetStyle("TotalTimerSurtitle"));
+            GUILayout.Label(_timer.GetTotalTime(), _skin.GetStyle("TotalTimerLabel"));
 
             GUILayout.FlexibleSpace();
         }

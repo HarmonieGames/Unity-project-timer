@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Editor.HarmonieGames.Timer
 {
@@ -23,8 +24,10 @@ namespace Editor.HarmonieGames.Timer
         public string GetTotalTime()
         {
             var totalTime = new TimeSpan();
-            totalTime = _sessions.Aggregate(totalTime, (current, s) => current + s.ToTimeSpan());
-            return totalTime.ToString("hh':'mm':'ss");
+
+            totalTime = _sessions.Aggregate(totalTime, (current, session) => current + session.ToTimeSpan());
+
+            return $"{totalTime.TotalHours:00}:{totalTime.Minutes:00}:{totalTime.Seconds:00}";
         }
 
         public bool GetTimerStatus()
