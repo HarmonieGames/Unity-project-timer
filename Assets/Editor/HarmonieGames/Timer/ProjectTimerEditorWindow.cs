@@ -13,7 +13,7 @@ namespace Editor.HarmonieGames.Timer
         public static void OpenWindow()
         {
             var window = GetWindow<ProjectTimerEditorWindow>("Project Timer");
-            window.minSize = new Vector2(250, 250);
+            window.minSize = new Vector2(250, 325);
             window.Show();
         }
 
