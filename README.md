@@ -1,7 +1,7 @@
 # Unity Project Timer
 (Under developpement)
 
-**Unity project timer** allows you to register the total time passed on your project.
- 
- 
-<img width="253" alt="screenshot" src="https://user-images.githubusercontent.com/7765026/232739242-6acc0aa9-46c8-48d5-b4af-88e0e3ee8785.png">
+**Unity project timer** allows you to register time passed during your Unity development (daily and total).
+
+
+<img width="312" alt="Capture d’écran 2023-04-18 à 15 39 22" src="https://user-images.githubusercontent.com/7765026/232796262-6feca73d-b01c-4f4e-a3db-283da37ed153.png">
