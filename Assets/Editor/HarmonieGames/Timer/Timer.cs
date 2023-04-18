@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,9 +15,16 @@ namespace Editor.HarmonieGames.Timer
         
         public static Action OnTimerUpdate;
 
-        public string GetTime()
+        public string GetLastSessionTime()
         {
             return _timeSpan.ToString("hh':'mm':'ss");
+        }
+
+        public string GetTotalTime()
+        {
+            var totalTime = new TimeSpan();
+            totalTime = _sessions.Aggregate(totalTime, (current, s) => current + s.ToTimeSpan());
+            return totalTime.ToString("hh':'mm':'ss");
         }
 
         public bool GetTimerStatus()

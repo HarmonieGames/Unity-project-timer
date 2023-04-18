@@ -40,7 +40,7 @@ namespace Editor.HarmonieGames.Timer
             GUILayout.FlexibleSpace();
         
             GUILayout.Label("Total project time", _skin.GetStyle("TimerSurtitle"));
-            GUILayout.Label(_timer.GetTime(), _skin.GetStyle("TimerLabel"));
+            GUILayout.Label(_timer.GetTotalTime(), _skin.GetStyle("TimerLabel"));
 
             Texture2D icon = null;
 

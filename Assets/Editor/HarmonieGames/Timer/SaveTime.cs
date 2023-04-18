@@ -71,7 +71,7 @@ namespace Editor.HarmonieGames.Timer
         {
             //Last Session in List
             var lastSession = _sessions[_sessions.Count - 1];
-            
+
             if (lastSession.ToDateTime() == DateTime.Now.Date)
             {
                 //Update last session
