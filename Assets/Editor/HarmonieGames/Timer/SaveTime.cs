@@ -21,7 +21,7 @@ namespace Editor.HarmonieGames.Timer
             if (!System.IO.File.Exists(FilePath))
             {
                 //if not, create file
-                var newSession = new Session(new TimeSpan());
+                var newSession = new Session(new TimeSpan(), DateTime.Now.Date);
                 _sessions.Add(newSession);
                 
                 System.IO.File.WriteAllText(FilePath, JsonUtility.ToJson(newSession));
@@ -72,17 +72,15 @@ namespace Editor.HarmonieGames.Timer
             //Last Session in List
             var lastSession = _sessions[_sessions.Count - 1];
             
-            Debug.Log(lastSession.ToDateTime() + " vs " + DateTime.Now.Date);
-            
             if (lastSession.ToDateTime() == DateTime.Now.Date)
             {
                 //Update last session
-                _sessions[_sessions.Count - 1] = new Session(timeSpan);
+                _sessions[_sessions.Count - 1] = new Session(timeSpan, lastSession.ToDateTime());
             }
             else
             {
                 //Add new session
-                _sessions.Add(new Session(timeSpan));
+                _sessions.Add(new Session(timeSpan, DateTime.Now.Date));
             }
 
             var json = "[";
@@ -114,14 +112,14 @@ namespace Editor.HarmonieGames.Timer
         public int minutes;
         public int seconds;
 
-        public Session(TimeSpan timeSpan)
+        public Session(TimeSpan timeSpan, DateTime dateTime)
         {
-            date = DateTime.Now.ToString("dd/MM/yyyy");
+            date = dateTime.ToString("dd/MM/yyyy");
             hours = timeSpan.Hours;
             minutes = timeSpan.Minutes;
             seconds = timeSpan.Seconds;
         }
-        
+
         public TimeSpan ToTimeSpan()
         {
             return new TimeSpan(hours, minutes, seconds);

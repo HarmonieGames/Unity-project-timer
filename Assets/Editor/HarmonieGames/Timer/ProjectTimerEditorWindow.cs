@@ -23,20 +23,16 @@ namespace Editor.HarmonieGames.Timer
         
             _skin = AssetDatabase.LoadAssetAtPath<GUISkin>($"{_folderPath}/Stylesheet.guiskin");
         
-            _timer = new global::Editor.HarmonieGames.Timer.Timer();
-        
-            var sessions = SaveTime.LoadSessions();
-
-            _timer.AssignSession(sessions[sessions.Count - 1]);
-        
+            _timer = new Timer();
+            _timer.LoadSessions(SaveTime.LoadSessions());
             _timer.SetTimer(true);
         
-            global::Editor.HarmonieGames.Timer.Timer.OnTimerUpdate += UpdateUI;
+            Timer.OnTimerUpdate += UpdateUI;
         }
 
         private void OnDisable()
         {
-            global::Editor.HarmonieGames.Timer.Timer.OnTimerUpdate -= UpdateUI;
+            Timer.OnTimerUpdate -= UpdateUI;
         }
     
         private void OnGUI()

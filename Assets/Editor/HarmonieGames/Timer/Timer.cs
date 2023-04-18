@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,6 +10,8 @@ namespace Editor.HarmonieGames.Timer
         private TimeSpan _timeSpan;
         private bool _isTimerRunning = true;
         private CancellationTokenSource _cancellationToken;
+        private List<Session> _sessions;
+        
         public static Action OnTimerUpdate;
 
         public string GetTime()
@@ -32,7 +35,13 @@ namespace Editor.HarmonieGames.Timer
             AwaitOneSecond();
         }
 
-        public void AssignSession(Session session)
+        public void LoadSessions(List<Session> sessions)
+        {
+            _sessions = sessions;
+            AssignLastSession(sessions[sessions.Count - 1]);
+        }
+
+        public void AssignLastSession(Session session)
         {
             _timeSpan = session.ToTimeSpan();
         }
