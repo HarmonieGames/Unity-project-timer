@@ -44,9 +44,7 @@ namespace Editor.HarmonieGames.Timer
             GUILayout.Label(_timer.GetLastSessionTime(), _skin.GetStyle("CurrentTimerLabel"));
 
             //Button
-            Texture2D icon = null;
-
-            icon = AssetDatabase.LoadAssetAtPath<Texture2D>(_timer.GetTimerStatus() ? $"{_folderPath}/Assets/pause-icon.png" : $"{_folderPath}/Assets/play-icon.png");
+            var icon = AssetDatabase.LoadAssetAtPath<Texture2D>(_timer.GetTimerStatus() ? $"{_folderPath}/Assets/pause-icon.png" : $"{_folderPath}/Assets/play-icon.png");
 
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
