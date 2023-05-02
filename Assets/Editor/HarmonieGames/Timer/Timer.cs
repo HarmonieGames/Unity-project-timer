@@ -34,6 +34,11 @@ namespace Editor.HarmonieGames.Timer
         {
             return _isTimerRunning;
         }
+        
+        public Session[] GetSessions()
+        {
+            return _sessions.ToArray();
+        }
     
         public void ToggleTimer()
         {

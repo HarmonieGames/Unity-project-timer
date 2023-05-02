@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -61,6 +64,17 @@ namespace Editor.HarmonieGames.Timer
         
             GUILayout.Label("Total project time", _skin.GetStyle("TotalTimerSurtitle"));
             GUILayout.Label(_timer.GetTotalTime(), _skin.GetStyle("TotalTimerLabel"));
+
+            if (GUILayout.Button("test"))
+            {
+                //Create string with headers
+                var headers = new[] {"Date", "Time"};
+                //Create string data for table
+                
+                var data = _timer.GetSessions().Select(s => new[] {s.date, s.ToTimeSpan().TotalHours.ToString(CultureInfo.InvariantCulture)}).ToList();
+
+                Export.ExportInCsv(headers,data);
+            }
 
             GUILayout.FlexibleSpace();
         }

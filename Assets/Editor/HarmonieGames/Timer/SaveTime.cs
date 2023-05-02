@@ -71,11 +71,12 @@ namespace Editor.HarmonieGames.Timer
         {
             //Last Session in List
             var lastSession = _sessions[_sessions.Count - 1];
-
-            if (lastSession.ToDateTime() == DateTime.Now.Date)
+            var lastSessionDate = DateUtils.ToDateTime(lastSession.date, DateFormat.ddMMyyyy);
+            
+            if (lastSessionDate == DateTime.Now.Date)
             {
                 //Update last session
-                _sessions[_sessions.Count - 1] = new Session(timeSpan, lastSession.ToDateTime());
+                _sessions[_sessions.Count - 1] = new Session(timeSpan, lastSessionDate);
             }
             else
             {
@@ -114,7 +115,7 @@ namespace Editor.HarmonieGames.Timer
 
         public Session(TimeSpan timeSpan, DateTime dateTime)
         {
-            date = dateTime.ToString("dd/MM/yyyy");
+            date = DateUtils.FormatDateString(dateTime, DateFormat.ddMMyyyy);
             hours = timeSpan.Hours;
             minutes = timeSpan.Minutes;
             seconds = timeSpan.Seconds;
@@ -124,11 +125,6 @@ namespace Editor.HarmonieGames.Timer
         {
             return new TimeSpan(hours, minutes, seconds);
         }
-        
-        public DateTime ToDateTime()
-        {
-            return DateTime.ParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-        }
-    }
 
+    }
 }
