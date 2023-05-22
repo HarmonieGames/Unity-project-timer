@@ -3,5 +3,6 @@
 
 **Unity project timer** allows you to register time passed during your Unity development (daily and total).
 
+<img width="337" alt="Unity project timer screenshot" src="https://github.com/HarmonieGames/Unity-project-timer/assets/7765026/5c0f1595-ebb4-4cb9-aa57-b47b1dde07fb">
 
-<img width="312" alt="Capture d’écran 2023-04-18 à 15 39 22" src="https://user-images.githubusercontent.com/7765026/232796262-6feca73d-b01c-4f4e-a3db-283da37ed153.png">
+
