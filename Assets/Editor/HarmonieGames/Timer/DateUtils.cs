@@ -22,9 +22,9 @@ namespace Editor.HarmonieGames.Timer
         {
             return dateFormat switch
             {
-                DateFormat.ddmmyyyy => DateTime.ParseExact(dateString, "dd/MM/yyyy", new CultureInfo("fr-Fr")),
-                DateFormat.mmddyyyy => DateTime.ParseExact(dateString, "MM/dd/yyyy", new CultureInfo("fr-Fr")),
-                _ => DateTime.ParseExact(dateString, "dd/MM/yyyy", new CultureInfo("fr-Fr"))
+                DateFormat.ddmmyyyy => DateTime.ParseExact(dateString, "dd/MM/yyyy", new CultureInfo("fr-FR")),
+                DateFormat.mmddyyyy => DateTime.ParseExact(dateString, "MM/dd/yyyy", new CultureInfo("en-US")),
+                _ => DateTime.ParseExact(dateString, "dd/MM/yyyy", new CultureInfo("fr-FR"))
             };
         }
 

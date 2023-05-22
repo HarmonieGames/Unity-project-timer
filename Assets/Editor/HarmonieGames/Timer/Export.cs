@@ -17,17 +17,11 @@ namespace Editor.HarmonieGames.Timer
             var headers = new[] {"Date", "Time"};
         
             var dateFormat = (DateFormat)EditorPrefs.GetInt("customSettings.dateFormat");
+            var format = DateUtils.GetDateFormatString(dateFormat);
 
-            Debug.Log(dateFormat);
-            var stringDate = ProjectTimerEditorWindow.ProjectTimer.GetSessions()[0].date;
-            Debug.Log(stringDate);
-            
-            var nDate = DateUtils.ToDateTime(stringDate, dateFormat);
-            Debug.Log("jour : " + nDate.Day + " | mois :" + nDate.Month);
-            
             //Create string data for table
-            var data = ProjectTimerEditorWindow.ProjectTimer.GetSessions().Select(s => new[] {DateUtils.FormatDateString(DateUtils.ToDateTime(s.date,dateFormat),dateFormat), s.ToTimeSpan().TotalHours.ToString(CultureInfo.InvariantCulture)}).ToList();
-
+            var data = (from s in ProjectTimerEditorWindow.ProjectTimer.GetSessions() let nDate = DateTime.ParseExact(s.date, "dd/MM/yyyy", NumberFormatInfo.InvariantInfo) select new[] {nDate.ToString(format), s.ToTimeSpan().TotalHours.ToString(CultureInfo.InvariantCulture)}).ToList();
+            
             ExportInCsv(headers,data);
         }
 

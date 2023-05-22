@@ -5,10 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-project-timer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-project-timer/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/DateUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/DateUtils.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Export.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Export.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/ProjectTimerEditorWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/ProjectTimerEditorWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/SaveTime.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/SaveTime.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Time.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Time.json.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Timer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +82,7 @@
       <workItem from="1682063003639" duration="1844000" />
       <workItem from="1682150977112" duration="631000" />
       <workItem from="1683010226531" duration="25173000" />
-      <workItem from="1684764054895" duration="2036000" />
+      <workItem from="1684764054895" duration="6528000" />
     </task>
     <servers />
   </component>
