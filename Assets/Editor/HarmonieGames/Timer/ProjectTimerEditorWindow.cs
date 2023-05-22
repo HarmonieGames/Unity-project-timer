@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -6,29 +7,41 @@ using UnityEngine;
 
 namespace Editor.HarmonieGames.Timer
 {
-    public class ProjectTimerEditorWindow : EditorWindow
+    public class ProjectTimerEditorWindow : EditorWindow, IHasCustomMenu
     {
         private GUISkin _skin;
         private string _folderPath;
-        private Timer _timer;
+        public static Timer ProjectTimer;
+        
+        //Settings
+        private bool _isTimerLaunchedByDefault;
 
-        [MenuItem("Tools/Harmonie Games/Project Timer")]
+        [MenuItem("Tools/Harmonie Games/Project Timer/Open Project Timer")]
         public static void OpenWindow()
         {
             var window = GetWindow<ProjectTimerEditorWindow>("Project Timer");
             window.minSize = new Vector2(250, 325);
             window.Show();
         }
+        
+        void IHasCustomMenu.AddItemsToMenu(GenericMenu menu)
+        {
+            var content = new GUIContent("Export Timer to CSV");
+            menu.AddItem(content,false, Export.ExportTimerInCsv);
+        }
 
         private void OnEnable()
         {
             _folderPath = AssetDatabase.GetAssetPath(MonoScript.FromScriptableObject(this)).Replace("/ProjectTimerEditorWindow.cs", "");
-        
             _skin = AssetDatabase.LoadAssetAtPath<GUISkin>($"{_folderPath}/Stylesheet.guiskin");
         
-            _timer = new Timer();
-            _timer.LoadSessions(SaveTime.LoadSessions());
-            _timer.SetTimer(true);
+            ProjectTimer = new Timer();
+            ProjectTimer.LoadSessions(SaveTime.LoadSessions());
+            
+            //Settings
+            _isTimerLaunchedByDefault = EditorPrefs.GetBool("customSettings.timerLaunchedByDefault");
+
+            ProjectTimer.SetTimer(_isTimerLaunchedByDefault);
         
             Timer.OnTimerUpdate += UpdateUI;
         }
@@ -44,37 +57,25 @@ namespace Editor.HarmonieGames.Timer
             
             //Current session time
             GUILayout.Label("Current session time", _skin.GetStyle("CurrentTimerSurtitle"));
-            GUILayout.Label(_timer.GetLastSessionTime(), _skin.GetStyle("CurrentTimerLabel"));
+            GUILayout.Label(ProjectTimer.GetLastSessionTime(), _skin.GetStyle("CurrentTimerLabel"));
 
             //Button
-            var icon = AssetDatabase.LoadAssetAtPath<Texture2D>(_timer.GetTimerStatus() ? $"{_folderPath}/Assets/pause-icon.png" : $"{_folderPath}/Assets/play-icon.png");
+            var icon = AssetDatabase.LoadAssetAtPath<Texture2D>(ProjectTimer.GetTimerStatus() ? $"{_folderPath}/Assets/pause-icon.png" : $"{_folderPath}/Assets/play-icon.png");
 
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             
             if (GUILayout.Button(icon,_skin.GetStyle("PlayButton")))
             {
-                _timer.ToggleTimer();
+                ProjectTimer.ToggleTimer();
             }
             
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
             
             //Total time
-        
             GUILayout.Label("Total project time", _skin.GetStyle("TotalTimerSurtitle"));
-            GUILayout.Label(_timer.GetTotalTime(), _skin.GetStyle("TotalTimerLabel"));
-
-            if (GUILayout.Button("test"))
-            {
-                //Create string with headers
-                var headers = new[] {"Date", "Time"};
-                //Create string data for table
-                
-                var data = _timer.GetSessions().Select(s => new[] {s.date, s.ToTimeSpan().TotalHours.ToString(CultureInfo.InvariantCulture)}).ToList();
-
-                Export.ExportInCsv(headers,data);
-            }
+            GUILayout.Label(ProjectTimer.GetTotalTime(), _skin.GetStyle("TotalTimerLabel"));
 
             GUILayout.FlexibleSpace();
         }

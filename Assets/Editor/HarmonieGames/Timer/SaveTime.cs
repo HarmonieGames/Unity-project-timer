@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace Editor.HarmonieGames.Timer
@@ -47,13 +48,14 @@ namespace Editor.HarmonieGames.Timer
         private static IEnumerable<Session> FromStringToSession(IEnumerable<string> strings)
         {
             var sessions = new List<Session>();
+            const string delimiter = ",";
             
             foreach (var s in strings)
             {
                 var cleanString = s + "}";
                 
-                //If first charactere is comma, remove it
-                if (cleanString[0] == ',')
+                //If first character is comma, remove it
+                if (cleanString[0] == delimiter[0])
                 {
                     cleanString = cleanString.Substring(1);
                 }
@@ -69,9 +71,11 @@ namespace Editor.HarmonieGames.Timer
         //Save timeSpan to json file
         public static void SaveTimeSpan(TimeSpan timeSpan)
         {
+            const string delimiter = ",";
+
             //Last Session in List
             var lastSession = _sessions[_sessions.Count - 1];
-            var lastSessionDate = DateUtils.ToDateTime(lastSession.date, DateFormat.ddMMyyyy);
+            var lastSessionDate = DateUtils.ToDateTime(lastSession.date, DateFormat.ddmmyyyy);
             
             if (lastSessionDate == DateTime.Now.Date)
             {
@@ -84,6 +88,12 @@ namespace Editor.HarmonieGames.Timer
                 _sessions.Add(new Session(timeSpan, DateTime.Now.Date));
             }
 
+            //If sessions have no time recorded, remove them
+            foreach (var session in _sessions.Where(session => session.ToTimeSpan() == TimeSpan.Zero).ToArray())
+            {
+                _sessions.Remove(session);
+            }
+
             var json = "[";
             
             //Serialize timeSpanData to json
@@ -94,7 +104,7 @@ namespace Editor.HarmonieGames.Timer
                 //if not last element, add comma
                 if (s != FromSessionToString()[FromSessionToString().Count - 1])
                 {
-                    json += ",";
+                    json += delimiter;
                 }
             }
             
@@ -115,7 +125,7 @@ namespace Editor.HarmonieGames.Timer
 
         public Session(TimeSpan timeSpan, DateTime dateTime)
         {
-            date = DateUtils.FormatDateString(dateTime, DateFormat.ddMMyyyy);
+            date = dateTime.ToString("dd/MM/yyyy");
             hours = timeSpan.Hours;
             minutes = timeSpan.Minutes;
             seconds = timeSpan.Seconds;
@@ -125,6 +135,5 @@ namespace Editor.HarmonieGames.Timer
         {
             return new TimeSpan(hours, minutes, seconds);
         }
-
     }
 }

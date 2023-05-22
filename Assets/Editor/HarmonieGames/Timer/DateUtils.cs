@@ -12,9 +12,8 @@ namespace Editor.HarmonieGames.Timer
         {
             return dateFormat switch
             {
-                DateFormat.ddMMyyyy => $"{date.Day:00}/{date.Month:00}/{date.Year}",
-                DateFormat.MMddyyyy => $"{date.Month:00}/{date.Day:00}/{date.Year}",
-                DateFormat.yyyyMMdd => $"{date.Year}/{date.Month:00}/{date.Day:00}",
+                DateFormat.ddmmyyyy => $"{date.Day:00}/{date.Month:00}/{date.Year}",
+                DateFormat.mmddyyyy => $"{date.Month:00}/{date.Day:00}/{date.Year}",
                 _ => $"{date.Day:00}/{date.Month:00}/{date.Year}"
             };
         }
@@ -23,18 +22,26 @@ namespace Editor.HarmonieGames.Timer
         {
             return dateFormat switch
             {
-                DateFormat.ddMMyyyy => DateTime.ParseExact(dateString, "dd/MM/yyyy", CultureInfo.InvariantCulture),
-                DateFormat.MMddyyyy => DateTime.ParseExact(dateString, "MM/dd/yyyy", CultureInfo.InvariantCulture),
-                DateFormat.yyyyMMdd => DateTime.ParseExact(dateString, "yyyy/MM/dd", CultureInfo.InvariantCulture),
-                _ => DateTime.ParseExact(dateString, "dd/MM/yyyy", CultureInfo.InvariantCulture)
+                DateFormat.ddmmyyyy => DateTime.ParseExact(dateString, "dd/MM/yyyy", new CultureInfo("fr-Fr")),
+                DateFormat.mmddyyyy => DateTime.ParseExact(dateString, "MM/dd/yyyy", new CultureInfo("fr-Fr")),
+                _ => DateTime.ParseExact(dateString, "dd/MM/yyyy", new CultureInfo("fr-Fr"))
+            };
+        }
+
+        public static string GetDateFormatString(DateFormat dateFormat)
+        {
+            return dateFormat switch
+            {
+                DateFormat.ddmmyyyy => "dd/MM/yyyy",
+                DateFormat.mmddyyyy => "MM/dd/yyyy",
+                _ => "dd/MM/yyyy"
             };
         }
     }
 
     public enum DateFormat
     {
-        ddMMyyyy,
-        MMddyyyy,
-        yyyyMMdd
+        ddmmyyyy,
+        mmddyyyy,
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using UnityEngine;
 
 namespace Editor.HarmonieGames.Timer
 {
@@ -64,11 +63,9 @@ namespace Editor.HarmonieGames.Timer
 
         private async void AwaitOneSecond()
         {
-            if (_isTimerRunning == false && _cancellationToken != null)
-            {
-                _cancellationToken.Cancel();
-                return;
-            }
+            _cancellationToken?.Cancel();
+
+            if (_isTimerRunning == false) return;
 
             _cancellationToken = new CancellationTokenSource();
             await WaitOneSecondTask(_cancellationToken.Token);
@@ -79,10 +76,10 @@ namespace Editor.HarmonieGames.Timer
         private async Task WaitOneSecondTask(CancellationToken token) {
             try {
                 while (true) {
-                    // Vérifier si la tâche a été annulée
+                    //Check if the task has been cancelled
                     token.ThrowIfCancellationRequested();
 
-                    // Attendre 1 seconde
+                    //Wait 1 second
                     await Task.Delay(1000, token);
 
                     _timeSpan += new TimeSpan(0, 0, 1);

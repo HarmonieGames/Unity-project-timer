@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b33e2db1-34ac-4620-9478-29705729f6e5" name="Changes" comment="" />
+    <list default="true" id="b33e2db1-34ac-4620-9478-29705729f6e5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-project-timer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-project-timer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/DateUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/DateUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Export.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Export.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/ProjectTimerEditorWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/ProjectTimerEditorWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/SaveTime.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/SaveTime.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Time.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Time.json.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Timer.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Settings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/DateUtils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Export.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Timer.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -66,7 +85,8 @@
       <workItem from="1682060021216" duration="419000" />
       <workItem from="1682063003639" duration="1844000" />
       <workItem from="1682150977112" duration="631000" />
-      <workItem from="1683010226531" duration="1396000" />
+      <workItem from="1683010226531" duration="25173000" />
+      <workItem from="1684764054895" duration="2036000" />
     </task>
     <servers />
   </component>
