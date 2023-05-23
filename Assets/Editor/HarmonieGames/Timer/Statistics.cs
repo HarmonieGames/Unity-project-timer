@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using UnityEngine;
 
 namespace Editor.HarmonieGames.Timer
@@ -21,15 +23,32 @@ namespace Editor.HarmonieGames.Timer
 
             var hoursPerPeriod = new Dictionary<string, float>();
             var hoursPerPeriodString = "";
+            var totalHours = 0f;
 
             hoursPerPeriod = isOverall ? GetHoursPerMonth(sessions) : GetHoursPerDayOfWeek(sessions);
 
             foreach (var period in hoursPerPeriod)
             {
-                hoursPerPeriodString += period.Key + ": " + period.Value.ToString("0.00") + "\n";
+                if (period.Value > 0)
+                    hoursPerPeriodString += $"<b>{period.Key}:</b> ~{period.Value:0.00} hours \n";
+                else
+                    hoursPerPeriodString += $"<b>{period.Key}:</b> -\n";
+                    
+                totalHours += period.Value;
             }
-            
-            statistics[2] = hoursPerPeriodString;
+
+            if (hoursPerPeriod.Count > 0)
+            {
+                statistics[2] = hoursPerPeriodString;
+
+                statistics[3] = $"<b>Total hours:</b> {totalHours:0.00} hours";
+            }
+            else
+            {
+                statistics[2] = "No work registered";
+                statistics[3] = "";
+            }
+                
 
             return statistics;
         }
@@ -77,17 +96,25 @@ namespace Editor.HarmonieGames.Timer
         //
         private static Dictionary<string,float> GetHoursPerDayOfWeek(IEnumerable<Session> sessions)
         {
-            var hoursPerDayOfWeek = new Dictionary<string, float>();
-            
+            //Add each day of week to dictionary with monday as first day
+            var hoursPerDayOfWeek = new Dictionary<string, float>
+            {
+                {"Monday", 0},
+                {"Tuesday", 0},
+                {"Wednesday", 0},
+                {"Thursday", 0},
+                {"Friday", 0},
+                {"Saturday", 0},
+                {"Sunday", 0}
+            };
+
             foreach (var session in sessions)
             {
                 var date = DateTime.ParseExact(session.date, "dd/MM/yyyy", null);
                 var key = date.DayOfWeek.ToString();
-                
+
                 if (hoursPerDayOfWeek.ContainsKey(key))
                     hoursPerDayOfWeek[key] += (float) session.ToTimeSpan().TotalHours;
-                else
-                    hoursPerDayOfWeek.Add(key, (float) session.ToTimeSpan().TotalHours);
             }
 
             return hoursPerDayOfWeek;

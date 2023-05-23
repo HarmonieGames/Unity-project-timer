@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b33e2db1-34ac-4620-9478-29705729f6e5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Session.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Session.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Statistics.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Statistics.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/StatisticsEditorWindow.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/StatisticsEditorWindow.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-project-timer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-project-timer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/SaveTime.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/SaveTime.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/ProjectTimerEditorWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/ProjectTimerEditorWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Statistics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Statistics.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/StatisticsEditorWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/StatisticsEditorWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Stylesheet.guiskin" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/HarmonieGames/Timer/Stylesheet.guiskin" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

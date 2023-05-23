@@ -56,7 +56,7 @@ namespace Editor.HarmonieGames.Timer
             GUILayout.FlexibleSpace();
             
             //Current session time
-            GUILayout.Label("Current session time", _skin.GetStyle("CurrentTimerSurtitle"));
+            GUILayout.Label("Current session time", _skin.GetStyle("Surtitle"));
             GUILayout.Label(ProjectTimer.GetLastSessionTime(), _skin.GetStyle("CurrentTimerLabel"));
 
             //Button
@@ -74,7 +74,7 @@ namespace Editor.HarmonieGames.Timer
             GUILayout.EndHorizontal();
             
             //Total time
-            GUILayout.Label("Total project time", _skin.GetStyle("TotalTimerSurtitle"));
+            GUILayout.Label("Total project time", _skin.GetStyle("Surtitle-small"));
             GUILayout.Label(ProjectTimer.GetTotalTime(), _skin.GetStyle("TotalTimerLabel"));
 
             GUILayout.FlexibleSpace();
