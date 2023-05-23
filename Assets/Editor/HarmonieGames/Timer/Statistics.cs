@@ -29,11 +29,8 @@ namespace Editor.HarmonieGames.Timer
 
             foreach (var period in hoursPerPeriod)
             {
-                if (period.Value > 0)
-                    hoursPerPeriodString += $"<b>{period.Key}:</b> ~{period.Value:0.00} hours \n";
-                else
-                    hoursPerPeriodString += $"<b>{period.Key}:</b> -\n";
-                    
+                hoursPerPeriodString += $"<b>{period.Key}:</b> ~{period.Value:0.00} hours \n";
+                
                 totalHours += period.Value;
             }
 
@@ -97,16 +94,7 @@ namespace Editor.HarmonieGames.Timer
         private static Dictionary<string,float> GetHoursPerDayOfWeek(IEnumerable<Session> sessions)
         {
             //Add each day of week to dictionary with monday as first day
-            var hoursPerDayOfWeek = new Dictionary<string, float>
-            {
-                {"Monday", 0},
-                {"Tuesday", 0},
-                {"Wednesday", 0},
-                {"Thursday", 0},
-                {"Friday", 0},
-                {"Saturday", 0},
-                {"Sunday", 0}
-            };
+            var hoursPerDayOfWeek = new Dictionary<string, float>();
 
             foreach (var session in sessions)
             {
@@ -115,6 +103,8 @@ namespace Editor.HarmonieGames.Timer
 
                 if (hoursPerDayOfWeek.ContainsKey(key))
                     hoursPerDayOfWeek[key] += (float) session.ToTimeSpan().TotalHours;
+                else
+                    hoursPerDayOfWeek.Add(key, (float) session.ToTimeSpan().TotalHours);
             }
 
             return hoursPerDayOfWeek;
